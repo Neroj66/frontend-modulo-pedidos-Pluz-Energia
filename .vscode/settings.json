@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/8034c9c1-4ad0-45b4-b319-bfafbde4e25d/resourceGroups/api-modulo-pedidos/providers/Microsoft.Web/sites/backend-modulo-pedidos",
+    "appService.deploySubpath": "myExpressApp"
+}
