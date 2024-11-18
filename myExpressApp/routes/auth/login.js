@@ -16,7 +16,7 @@ router.post('/login',  (req, res) =>{
         db.query(consult, [username], (err, result) => {
             if (err) {
                 console.error('Error en la consulta:', err);
-                res.status(500).send('Error en la consulta');
+                res.status(500).json({ error: 'Error en la consulta' });
                 return;
             }
     

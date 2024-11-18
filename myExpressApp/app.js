@@ -7,13 +7,18 @@ const cors = require('cors'); // Importa el paquete cors
 
 // Configura CORS para permitir solo solicitudes desde un dominio específico
 const corsOptions = {
-  origin: 'http://10.155.241.37:4000', // Reemplaza con tu dominio permitido
-  methods: ["GET", "POST","PUT","DELETE"],
+  origin: 'https://ashy-grass-009f4900f.5.azurestaticapps.net', // Reemplaza con tu dominio permitido
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization'], // Asegúrate de permitir encabezados necesario
   optionsSuccessStatus: 200 // Algunos navegadores antiguos (IE11, algunos SmartTVs) necesitan esto
 };
 
-app.use(cors(corsOptions));
+var app = express();
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); 
+app.use(cors(corsOptions)); // Aplica la configuración de CORS antes de las rutas
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -24,7 +29,6 @@ var aprob_vali = require('./routes/api/aprobar_validar');
 var consolidador = require('./routes/api/consolidador');
 var obtPedido = require('./routes/api/obtener-pedidos');
 var operate = require('./routes/api/operate-pedido');
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,6 +49,7 @@ app.use('/crear',crearpedido);
 app.use('/auth',auth);
 app.use('/obt-pedidos',obtPedido);
 app.use('/operate-ped',operate);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

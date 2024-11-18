@@ -277,7 +277,8 @@ router.get('/pedidos', (req, res) => {
                     FROM liquidador_contratista
                     WHERE liquidador_id = ?
                 )
-                AND send_aprobacion=1
+                AND send_aprobacion=1 
+                AND send_validacion=0
             ORDER BY 
                 pedidos.codigo DESC`,
             [liquidador_id],

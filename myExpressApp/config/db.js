@@ -2,22 +2,6 @@
 var mysql = require('mysql2');
 
 // Configura la conexión a la base de datos
-var connection = mysql.createPool({
-  host: 'pyg-server.mysql.database.azure.com',
-  user: 'pyg',
-  password: 'Pluz2024$',
-  database: 'pedidos_ora',
-  waitForConnections: true, // Espera conexiones si el pool está lleno
-  connectionLimit: 70, // Número máximo de conexiones en el pool
-  queueLimit: 10 // Número máximo de solicitudes en la cola de espera
-});
-
-// Exporta la conexión para que pueda ser utilizada en otros archivos
-module.exports = connection;
-
-
-/*//manera normal
-// Configura la conexión a la base de datos
 var connection = mysql.createConnection({
   host: 'pyg-server.mysql.database.azure.com', // reemplaza con tu hostname de Azure
   user: 'pyg',            // reemplaza con tu nombre de usuario
@@ -32,4 +16,24 @@ connection.connect(function(err) {
     return;
   }
   console.log('Conectado a la base de datos como id ' + connection.threadId);
-});*/
+});
+
+// Exporta la conexión para que pueda ser utilizada en otros archivos
+module.exports = connection;
+
+
+/*//manera normal
+// Configura la conexión a la base de datos
+
+var connection = mysql.createPool({
+  host: 'pyg-server.mysql.database.azure.com',
+  user: 'pyg',
+  password: 'Pluz2024$',
+  database: 'pedidos_ora',
+  waitForConnections: true, // Espera conexiones si el pool está lleno
+  connectionLimit: 70, // Número máximo de conexiones en el pool
+  queueLimit: 10 // Número máximo de solicitudes en la cola de espera
+});
+*/
+
+

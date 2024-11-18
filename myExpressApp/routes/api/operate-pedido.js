@@ -128,7 +128,7 @@ router.put('/update', (req, res) => {
                     updatedMaterials.forEach(material => {
                         const updateMaterialQuery = 'UPDATE pedidos_detalle SET cantidad = ?, importe = ? WHERE pedidos_id = ? AND material_id = ?';
                         queries.push(new Promise((resolve, reject) => {
-                            dbn.query(updateMaterialQuery, [material.cantidad, material.importe, id, material.id], (err) => {
+                            db.query(updateMaterialQuery, [material.cantidad, material.importe, id, material.id], (err) => {
                                 if (err) return reject(err);
                                 resolve();
                             });
